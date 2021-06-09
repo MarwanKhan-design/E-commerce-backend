@@ -45,7 +45,7 @@ userSchema
   .set(function (password) {
     this._password = password
     this.salt = uuidv1()
-    this.hashed_password = encryptPassword(password)
+    this.hashed_password = this.encryptPassword(password)
   })
   .get(function () {
     this._password

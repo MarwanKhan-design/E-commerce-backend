@@ -4,12 +4,15 @@ import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import userRoutes from './routes/user.js'
-
 import morgan from 'morgan'
+// import cookieParser from 'cookie-parser'
 
 // App
 
 const app = express()
+
+app.use(express.json())
+
 dotenv.config()
 
 // Database
@@ -21,6 +24,9 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log('Database Connected'))
+
+// Middleware
+app.use(morgan('dev'))
 
 // Routes
 
