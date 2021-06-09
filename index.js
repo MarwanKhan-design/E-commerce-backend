@@ -5,6 +5,8 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import userRoutes from './routes/user.js'
 
+import morgan from 'morgan'
+
 // App
 
 const app = express()
