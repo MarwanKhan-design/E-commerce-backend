@@ -1,11 +1,15 @@
 import express from 'express'
-import { signup, signin, signout } from '../controller/user.js'
-import { userSignUpValidator } from '../validator/index.js'
+import { requireSignin, isAuth, isAdmin } from '../controller/auth.js'
+import { userById } from '../controller/user.js'
 
 const router = express.Router()
 
-router.post('/signup', userSignUpValidator, signup)
-router.post('/signin', signin)
-router.get('/signout', signout)
+router.get('/secret/:userId', requireSignin, isAuth, isAdmin, (req, res) => {
+  res.json({
+    user: req.profile,
+  })
+})
+
+router.param('userId', userById)
 
 export default router
