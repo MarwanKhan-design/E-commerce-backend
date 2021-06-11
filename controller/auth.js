@@ -56,7 +56,6 @@ export const requireSignin = expressJwt({
 
 export const isAuth = (req, res, next) => {
   let user = req.profile && req.auth && req.profile._id == req.auth.id
-  console.log(req.profile, req.auth, req.profile._id, req.auth.id)
   if (!user) {
     res.status(403).json({ error: 'Access Denied' })
   }

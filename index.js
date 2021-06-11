@@ -7,8 +7,12 @@ import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import expressValidator from 'express-validator'
 
+// Import routes
+
 import authRoutes from './routes/auth.js'
 import userRoutes from './routes/user.js'
+import categoryRoutes from './routes/category.js'
+import productRoutes from './routes/product.js'
 
 // App
 
@@ -36,6 +40,8 @@ app.use(expressValidator())
 
 app.use('/api', authRoutes)
 app.use('/api', userRoutes)
+app.use('/api', categoryRoutes)
+app.use('/api', productRoutes)
 
 const port = process.env.PORT || 8000
 
